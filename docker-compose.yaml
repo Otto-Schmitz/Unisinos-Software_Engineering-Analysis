@@ -3,7 +3,7 @@ version: '3'
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: postgres
+    container_name: postgres-se
     environment:
       - POSTGRES_USER=se
       - POSTGRES_PASSWORD=se
@@ -19,14 +19,14 @@ services:
   app:
     depends_on:
       - postgres
-    container_name: api
+    container_name: api-se
     build:
       context: .
       dockerfile: Dockerfile
     image: se:v1
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/se
-      - SPRING_DATASOURCE_USER=se
+      - SPRING_DATASOURCE_USERNAME=se
       - SPRING_DATASOURCE_PASSWORD=se
     ports:
       - '8080:8080'
