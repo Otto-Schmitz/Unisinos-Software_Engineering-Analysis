@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=se
+      - POSTGRES_PASSWORD=se
+      - POSTGRES_DB=se
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    ports:
+      - '5432:5432'
+    restart: always
+
+  app:
+    depends_on:
+      - postgres
+    container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: se:v1
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/se
+      - SPRING_DATASOURCE_USER=se
+      - SPRING_DATASOURCE_PASSWORD=se
+    ports:
+      - '8080:8080'
+    networks:
+      - app-network
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
