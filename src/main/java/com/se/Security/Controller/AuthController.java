@@ -1,5 +1,6 @@
 package com.se.Security.Controller;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,10 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController()
+@RestController
 public class AuthController {
-    @GetMapping("/public/auth")
+    @GetMapping("public/auth")
     public ResponseEntity securedApi(@RequestHeader HttpHeaders headers) {
+        System.out.println(headers);
         if (headers.containsKey(HttpHeaders.AUTHORIZATION)) {
             String authorizationHeader = headers.getFirst(HttpHeaders.AUTHORIZATION);
             if (authorizationHeader.startsWith("Basic ")) {
