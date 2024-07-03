@@ -31,13 +31,6 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-//                .authorizeRequests(expressionInterceptUrlRegistry -> expressionInterceptUrlRegistry.requestMatchers("/public/**")
-//                        .permitAll()
-//                        .anyRequest()
-//                        .authenticated())
-//                .authorizeRequests(expressionInterceptUrlRegistry -> expressionInterceptUrlRegistry.anyRequest().authenticated())
-//                .httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.authenticationEntryPoint((request, response, authException) -> response.setStatus(UNAUTHORIZED.value())))
-
                 .authorizeRequests()
                 .requestMatchers("/public/**")
                 .permitAll()
