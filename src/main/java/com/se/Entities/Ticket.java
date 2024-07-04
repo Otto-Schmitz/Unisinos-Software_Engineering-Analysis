@@ -3,6 +3,7 @@ package com.se.Entities;
 
 import java.time.LocalDateTime;
 
+import com.se.Entities.book.Book;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

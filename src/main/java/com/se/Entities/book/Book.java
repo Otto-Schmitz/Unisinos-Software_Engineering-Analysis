@@ -1,6 +1,7 @@
-package com.se.Entities;
+package com.se.Entities.book;
 
 
+import com.se.Entities.BookMetadata;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
