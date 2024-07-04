@@ -1,21 +1,13 @@
-package com.se.Entities;
+package com.se.Entities.bookMetadata;
+
+import com.se.Entities.book.Book;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Data
 @NoArgsConstructor(force = true)
@@ -26,7 +18,7 @@ public class BookMetadata {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;   
+    private Long id;
     /**
      * @see Book
      */
