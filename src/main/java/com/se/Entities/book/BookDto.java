@@ -1,6 +1,5 @@
 package com.se.Entities.book;
 
-import com.se.Entities.BookMetadata;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,7 +8,7 @@ import lombok.Data;
 public class BookDto {
     private Long id;
 
-    private BookMetadata metadata;
+    private Long metadataId;
 
     private Long storageLocation;
 

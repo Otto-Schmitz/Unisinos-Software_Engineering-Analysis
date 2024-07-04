@@ -1,4 +1,4 @@
-package com.se.Entities;
+package com.se.Entities.bookMetadata;
 
 import com.se.Entities.book.Book;
 import jakarta.persistence.*;
@@ -18,7 +18,7 @@ public class BookMetadata {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;   
+    private Long id;
     /**
      * @see Book
      */
