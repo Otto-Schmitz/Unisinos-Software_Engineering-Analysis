@@ -1,51 +1,45 @@
 package com.se.Entities;
 
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.EqualsAndHashCode;
 
-/**
- * @see BookMetadata
-*/
 @Entity
 @Data
 @NoArgsConstructor(force = true)
-@Builder
 @AllArgsConstructor
-@Table(name = "book")
-class Book {
+@Builder
+@Table(name = "ticket")
+class Ticket {
     /**
-     * Identifica ema cópia física de um livro.
+     *
      */
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    /**
-     * Relaciona com o {@link BookMetadata}.
-     */
-    @ManyToOne(optional = false)
+
     @NonNull
-    private BookMetadata metadata;
-
-    /**
-     * Identificador do local em que o livro esta armazenado. 
-     * <p>
-     * Equivalente ao call number na biblioteca da Unisinos.
-     */
-    private Long storageLocation;
-
-    private Integer edition;
-    
-    private Boolean borrowed;
+    private LocalDateTime returnDate;
+    @NonNull
+    private LocalDateTime loanDate;
+    @ManyToOne
+    @NonNull
+    private Patron patron;
+    @OneToOne
+    @NonNull
+    private Book book;
 }

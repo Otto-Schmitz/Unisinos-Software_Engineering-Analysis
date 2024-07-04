@@ -6,58 +6,44 @@ import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
+@Data
+@NoArgsConstructor(force = true)
+@AllArgsConstructor
+@Builder
 @Entity
 class BookMetadata {
     @Id
-    @GeneratedValue
-    public long id;   
+    @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;   
     /**
      * @see Book
      */
     @OneToMany(mappedBy = "metadata")
+    @NonNull
     private Set<Book> copies = new HashSet<>();
-    // TODO Adicionar limites de tamanho da string?
+    @NonNull
     private String title;
-    // TODO Adicionar limites de tamanho da string?
+    @NonNull
     private String author;
-    // TODO Adicionar limites de tamanho da string?
+    @NonNull
     private ArrayList<String> secondaryAuthors = new ArrayList<>();
     @Pattern(regexp = "\\d{10}(\\d{3})?", message = "{invalid.ISBN}")
-    private String ISBN;
+    @NonNull
+    private String isbn;
 
-    //TODO Usaremos construtores ou um builder?
-    //lembrar que a documentação tem esta nota sobre @Entity:
-    //The class must have a public or protected, no-argument constructor. The class may have other constructors.
-
-    public Set<Book> getCopies() {
-        return this.copies;
-    }
     public void addCopy(Book book) {
         this.copies.add(book);
-    }
-    public String getTitle() {
-        return this.title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getAuthor() {
-        return this.author;
-    }
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-    public ArrayList<String> getSecondaryAuthors() {
-        return this.secondaryAuthors;
-    }
-    public String getISBN() {
-        return this.ISBN;
-    }
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
     }
 }
