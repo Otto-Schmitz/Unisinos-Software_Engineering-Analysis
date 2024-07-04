@@ -39,7 +39,7 @@ public class Ticket {
     @ManyToOne
     @NonNull
     private Patron patron;
-    @OneToOne
+    @ManyToOne
     @NonNull
     private Book book;
 }
