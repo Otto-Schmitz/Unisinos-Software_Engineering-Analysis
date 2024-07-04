@@ -23,7 +23,7 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 @Builder
 @Table(name = "ticket")
-class Ticket {
+public class Ticket {
     /**
      *
      */

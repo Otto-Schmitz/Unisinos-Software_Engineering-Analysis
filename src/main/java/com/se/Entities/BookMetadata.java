@@ -22,7 +22,7 @@ import lombok.NonNull;
 @AllArgsConstructor
 @Builder
 @Entity
-class BookMetadata {
+public class BookMetadata {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)

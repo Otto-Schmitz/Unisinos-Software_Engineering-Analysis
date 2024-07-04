@@ -23,7 +23,7 @@ import lombok.NonNull;
 @Builder
 @AllArgsConstructor
 @Table(name = "book")
-class Book {
+public class Book {
     /**
      * Identifica ema cópia física de um livro.
      */

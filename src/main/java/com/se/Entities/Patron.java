@@ -20,7 +20,7 @@ import lombok.EqualsAndHashCode;
 @NoArgsConstructor(force = true)
 @AllArgsConstructor
 @Builder
-class Patron {
+public class Patron {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)

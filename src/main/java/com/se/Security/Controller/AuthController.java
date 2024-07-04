@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     @GetMapping("public/auth")
     public ResponseEntity securedApi(@RequestHeader HttpHeaders headers) {
-        System.out.println(headers);
         if (headers.containsKey(HttpHeaders.AUTHORIZATION)) {
             String authorizationHeader = headers.getFirst(HttpHeaders.AUTHORIZATION);
             if (authorizationHeader.startsWith("Basic ")) {
