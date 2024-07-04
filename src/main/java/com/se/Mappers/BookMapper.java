@@ -9,10 +9,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BookMapper {
-    public static Book toEntity(CreateBookRequest dto) {
+    public static Book toEntity(CreateBookRequest dto, BookMetadata bookMetadata) {
         return Book.builder()
+                .metadata(bookMetadata)
                 .storageLocation(dto.getStorageLocation())
                 .edition(dto.getEdition())
+                .borrowed(false)
                 .build();
     }
 
