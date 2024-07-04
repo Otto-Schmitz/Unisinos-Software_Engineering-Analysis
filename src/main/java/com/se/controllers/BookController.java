@@ -18,6 +18,6 @@ public class BookController {
 
     @PostMapping
     private ResponseEntity<BookDto> create(CreateBookRequest request) {
-        return null;
+        return bookInterface.create(request);
     }
 }
