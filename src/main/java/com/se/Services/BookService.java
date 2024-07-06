@@ -81,11 +81,13 @@ public class BookService implements BookInterface {
     }
 
     private Book createBook(CreateBookRequest request) {
-        return bookRepository.save(
-                BookMapper
+        return BookMapper
                         .toEntity(request, bookMetadataInterface.getById(
                                 request.getMetadataId()
-                        ))
-        );
+                        ));
+    }
+
+    private Book save(Book entity) {
+        return bookRepository.save(entity);
     }
 }
