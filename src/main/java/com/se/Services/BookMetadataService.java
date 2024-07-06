@@ -1,8 +1,9 @@
 package com.se.Services;
 
 import com.se.Entities.bookMetadata.BookMetadata;
-import com.se.Entities.bookMetadata.BookMetadataDto;
+import com.se.Entities.bookMetadata.response.BookMetadataDto;
 import com.se.Entities.bookMetadata.request.CreateBookMetadataRequest;
+import com.se.Entities.bookMetadata.request.UpdateBookMetadataRequest;
 import com.se.Mappers.BookMetadataMapper;
 import com.se.Repositories.BookMetadataRepository;
 import com.se.contracts.BookMetadataInterface;
@@ -29,7 +30,6 @@ public class BookMetadataService implements BookMetadataInterface {
                             .toDto(createBookMetadata(request))
             );
         } catch (Exception e) {
-
             return ResponseEntity.badRequest().build();
         }
     }
@@ -37,6 +37,32 @@ public class BookMetadataService implements BookMetadataInterface {
     @Override
     public BookMetadata getObject(Long id) {
         return getObjectBookMetadata(id);
+    }
+
+    @Override
+    public ResponseEntity<Long> delete(Long id) {
+        try {
+            return ResponseEntity.ok(deleteById(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @Override
+    public ResponseEntity<BookMetadataDto> update(UpdateBookMetadataRequest request) {
+        return null;
+    }
+
+    private BookMetadata updateBookMetadata(UpdateBookMetadataRequest request) {
+        return null;
+    }
+
+    @Transactional
+    private Long deleteById(Long id) {
+        getObjectBookMetadata(id);
+        bookMetadataRepository.deleteById(id);
+
+        return id;
     }
 
     @Transactional

@@ -2,7 +2,7 @@ package com.se.Mappers;
 
 import com.se.Entities.book.Book;
 import com.se.Entities.bookMetadata.BookMetadata;
-import com.se.Entities.bookMetadata.BookMetadataDto;
+import com.se.Entities.bookMetadata.response.BookMetadataDto;
 import com.se.Entities.bookMetadata.request.CreateBookMetadataRequest;
 
 import java.util.Set;

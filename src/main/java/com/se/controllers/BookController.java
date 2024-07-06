@@ -1,6 +1,6 @@
 package com.se.controllers;
 
-import com.se.Entities.book.BookDto;
+import com.se.Entities.book.response.BookDto;
 import com.se.Entities.book.request.CreateBookRequest;
 import com.se.contracts.BookInterface;
 import org.springframework.beans.factory.annotation.Autowired;

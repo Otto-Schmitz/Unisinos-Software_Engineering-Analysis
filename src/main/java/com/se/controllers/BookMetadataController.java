@@ -1,6 +1,6 @@
 package com.se.controllers;
 
-import com.se.Entities.bookMetadata.BookMetadataDto;
+import com.se.Entities.bookMetadata.response.BookMetadataDto;
 import com.se.Entities.bookMetadata.request.CreateBookMetadataRequest;
 import com.se.contracts.BookMetadataInterface;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.se.Services;
 
 import com.se.Entities.book.Book;
-import com.se.Entities.book.BookDto;
+import com.se.Entities.book.response.BookDto;
 import com.se.Entities.book.request.CreateBookRequest;
 import com.se.Mappers.BookMapper;
 import com.se.Repositories.BookRepository;
