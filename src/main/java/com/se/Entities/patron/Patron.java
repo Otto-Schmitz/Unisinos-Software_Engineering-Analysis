@@ -1,4 +1,4 @@
-package com.se.Entities;
+package com.se.Entities.patron;
 
 import java.util.HashSet;
 import java.util.Set;
