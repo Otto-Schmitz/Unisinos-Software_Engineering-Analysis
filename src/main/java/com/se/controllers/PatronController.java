@@ -1,3 +1,5 @@
+package com.se.controllers;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +16,7 @@ import com.se.Entities.patron.response.PatronDto;
 import com.se.contracts.PatronInterface;
 
 @RestController
-@RequestMapping("/patron")
+@RequestMapping("/patrons")
 public class PatronController {
 
     @Autowired
