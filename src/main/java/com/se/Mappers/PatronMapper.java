@@ -6,7 +6,6 @@ import com.se.Entities.patron.Patron;
 import com.se.Entities.patron.request.CreatePatronRequest;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static com.se.Mappers.BookMapper.toIdSet;
 
@@ -18,12 +17,13 @@ public class PatronMapper {
                 .build();
     }
 
-    public static Patron toEntity(PatronDto dto) {
+    public static Patron toEntity(PatronDto dto, Set<Book> borrowedBooks) {
         return Patron.builder()
                 .id(dto.getId())
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
                 .debt(dto.getDebt())
+                .borrowedBooks(borrowedBooks)
                 .build();
     }
 

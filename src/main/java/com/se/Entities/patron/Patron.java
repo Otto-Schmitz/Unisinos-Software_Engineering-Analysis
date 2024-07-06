@@ -35,6 +35,7 @@ public class Patron {
      * Valor devido a biblioteca
      */
     @NonNull
+    @Builder.Default
     private Integer debt = 0;
 
     /**
@@ -42,7 +43,8 @@ public class Patron {
      */
     @OneToMany
     @NonNull
-    private Set<Book> borrowedBooks = new HashSet<>();
+    @Builder.Default 
+    final private Set<Book> borrowedBooks = new HashSet<>();
 
     public void addBorrowedBooks(Book borrowedBooks) {
         this.borrowedBooks.add(borrowedBooks);
