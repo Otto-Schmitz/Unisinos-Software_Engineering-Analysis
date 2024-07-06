@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import static com.se.Mappers.BookMapper.toDto;
+import static org.springframework.http.ResponseEntity.badRequest;
 
 @Service
 public class BookService implements BookInterface  {
@@ -27,7 +28,7 @@ public class BookService implements BookInterface  {
         try {
             return ResponseEntity.ok(toDto(createBook(request)));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return badRequest().build();
         }
     }
 

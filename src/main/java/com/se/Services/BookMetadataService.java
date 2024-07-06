@@ -14,7 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 
+import static com.se.Mappers.BookMetadataMapper.toDto;
 import static com.se.Mappers.BookMetadataMapper.toEntity;
+import static org.springframework.http.ResponseEntity.*;
 
 @Service
 public class BookMetadataService implements BookMetadataInterface {
@@ -25,12 +27,12 @@ public class BookMetadataService implements BookMetadataInterface {
     @Override
     public ResponseEntity<BookMetadataDto> create(CreateBookMetadataRequest request) {
         try {
-            return ResponseEntity.ok(
+            return ok(
                     BookMetadataMapper
                             .toDto(createBookMetadata(request))
             );
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return badRequest().build();
         }
     }
 
@@ -42,19 +44,23 @@ public class BookMetadataService implements BookMetadataInterface {
     @Override
     public ResponseEntity<Long> delete(Long id) {
         try {
-            return ResponseEntity.ok(deleteById(id));
+            return ok(deleteById(id));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return badRequest().build();
         }
     }
 
     @Override
     public ResponseEntity<BookMetadataDto> update(UpdateBookMetadataRequest request) {
-        return null;
+        try {
+            return ok(toDto(updateBookMetadata(request)));
+        } catch (Exception e) {
+            return internalServerError().build();
+        }
     }
 
     private BookMetadata updateBookMetadata(UpdateBookMetadataRequest request) {
-        return null;
+        return save(getObjectBookMetadata(request.getId()));
     }
 
     @Transactional
@@ -65,9 +71,13 @@ public class BookMetadataService implements BookMetadataInterface {
         return id;
     }
 
-    @Transactional
     private BookMetadata createBookMetadata(CreateBookMetadataRequest request) {
-        return bookMetadataRepository.save(toEntity(request, new HashSet<>()));
+        return save(toEntity(request, new HashSet<>()));
+    }
+
+    @Transactional
+    private BookMetadata save(BookMetadata entity) {
+        return bookMetadataRepository.save(entity);
     }
 
     private BookMetadata getObjectBookMetadata(Long id) {
