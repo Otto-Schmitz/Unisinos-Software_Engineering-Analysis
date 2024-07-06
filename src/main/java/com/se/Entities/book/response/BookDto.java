@@ -1,4 +1,4 @@
-package com.se.Entities.book;
+package com.se.Entities.book.response;
 
 import lombok.Builder;
 import lombok.Data;

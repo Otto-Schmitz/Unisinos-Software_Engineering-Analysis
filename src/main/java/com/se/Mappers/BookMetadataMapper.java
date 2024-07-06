@@ -2,7 +2,8 @@ package com.se.Mappers;
 
 import com.se.Entities.book.Book;
 import com.se.Entities.bookMetadata.BookMetadata;
-import com.se.Entities.bookMetadata.BookMetadataDto;
+import com.se.Entities.bookMetadata.request.UpdateBookMetadataRequest;
+import com.se.Entities.bookMetadata.response.BookMetadataDto;
 import com.se.Entities.bookMetadata.request.CreateBookMetadataRequest;
 
 import java.util.Set;
@@ -20,6 +21,15 @@ public class BookMetadataMapper {
                 .build();
     }
 
+    public static BookMetadata updateEntity(BookMetadata entity, UpdateBookMetadataRequest request) {
+        entity.setAuthor(request.getAuthor());
+        entity.setTitle(request.getTitle());
+        entity.setIsbn(request.getIsbn());
+        entity.setSecondaryAuthors(request.getSecondaryAuthors());
+
+        return entity;
+    }
+
     public static BookMetadataDto toDto(BookMetadata entity) {
         return BookMetadataDto.builder()
                 .id(entity.getId())
@@ -30,5 +40,4 @@ public class BookMetadataMapper {
                 .copies(toIdSet(entity.getCopies()))
                 .build();
     }
-
 }

@@ -1,4 +1,4 @@
-package com.se.Entities.bookMetadata;
+package com.se.Entities.bookMetadata.response;
 
 import lombok.Builder;
 import lombok.Data;

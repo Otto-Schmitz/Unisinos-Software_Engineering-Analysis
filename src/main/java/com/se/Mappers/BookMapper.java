@@ -1,7 +1,8 @@
 package com.se.Mappers;
 
 import com.se.Entities.book.Book;
-import com.se.Entities.book.BookDto;
+import com.se.Entities.book.request.UpdateBookRequest;
+import com.se.Entities.book.response.BookDto;
 import com.se.Entities.book.request.CreateBookRequest;
 import com.se.Entities.bookMetadata.BookMetadata;
 
@@ -26,6 +27,15 @@ public class BookMapper {
                 .borrowed(dto.getBorrowed())
                 .storageLocation(dto.getStorageLocation())
                 .build();
+    }
+
+    public static Book updateEntity(Book entity, UpdateBookRequest request, BookMetadata bookMetadata) {
+        entity.setBorrowed(request.getBorrowed());
+        entity.setEdition(request.getEdition());
+        entity.setStorageLocation(request.getStorageLocation());
+        entity.setMetadata(bookMetadata);
+
+        return entity;
     }
 
     public static BookDto toDto(Book entity) {

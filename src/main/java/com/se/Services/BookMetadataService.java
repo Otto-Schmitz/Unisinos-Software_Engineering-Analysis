@@ -1,20 +1,24 @@
 package com.se.Services;
 
 import com.se.Entities.bookMetadata.BookMetadata;
-import com.se.Entities.bookMetadata.BookMetadataDto;
+import com.se.Entities.bookMetadata.response.BookMetadataDto;
 import com.se.Entities.bookMetadata.request.CreateBookMetadataRequest;
+import com.se.Entities.bookMetadata.request.UpdateBookMetadataRequest;
 import com.se.Mappers.BookMetadataMapper;
 import com.se.Repositories.BookMetadataRepository;
 import com.se.contracts.BookMetadataInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 
+import static com.se.Mappers.BookMetadataMapper.toDto;
 import static com.se.Mappers.BookMetadataMapper.toEntity;
+import static org.springframework.http.ResponseEntity.*;
 
-
+@Service
 public class BookMetadataService implements BookMetadataInterface {
 
     @Autowired
@@ -23,27 +27,67 @@ public class BookMetadataService implements BookMetadataInterface {
     @Override
     public ResponseEntity<BookMetadataDto> create(CreateBookMetadataRequest request) {
         try {
-            return ResponseEntity.ok(
+            return ok(
                     BookMetadataMapper
                             .toDto(createBookMetadata(request))
             );
         } catch (Exception e) {
-
-            return ResponseEntity.badRequest().build();
+            return badRequest().build();
         }
     }
 
     @Override
-    public BookMetadata getObject(Long id) {
-        return getObjectBookMetadata(id);
+    public ResponseEntity<BookMetadataDto> get(Long id) {
+        try {
+            return ResponseEntity.ok(toDto(getById(id)));
+        } catch (Exception e) {
+            return notFound().build();
+        }
+    }
+
+    @Override
+    public BookMetadata getById(Long id) {
+        return bookMetadataRepository.findById(id).orElseThrow();
+    }
+
+
+    @Override
+    public ResponseEntity<Long> delete(Long id) {
+        try {
+            return ok(deleteById(id));
+        } catch (Exception e) {
+            return badRequest().build();
+        }
+    }
+
+    @Override
+    public ResponseEntity<BookMetadataDto> update(UpdateBookMetadataRequest request) {
+        try {
+            return ok(toDto(updateBookMetadata(request)));
+        } catch (Exception e) {
+            return internalServerError().build();
+        }
+    }
+
+    @Override
+    @Transactional
+    public Long deleteById(Long id) {
+        getById(id);
+        bookMetadataRepository.deleteById(id);
+
+        return id;
+    }
+
+    private BookMetadata updateBookMetadata(UpdateBookMetadataRequest request) {
+        return save(getById(request.getId()));
+    }
+
+    private BookMetadata createBookMetadata(CreateBookMetadataRequest request) {
+        return save(toEntity(request, new HashSet<>()));
     }
 
     @Transactional
-    private BookMetadata createBookMetadata(CreateBookMetadataRequest request) {
-        return bookMetadataRepository.save(toEntity(request, new HashSet<>()));
-    }
-
-    private BookMetadata getObjectBookMetadata(Long id) {
-        return bookMetadataRepository.findById(id).orElseThrow();
+    private BookMetadata save(BookMetadata entity) {
+        return bookMetadataRepository.save(entity);
     }
 }
