@@ -19,4 +19,5 @@ public interface BookInterface {
 
     ResponseEntity<BookDto> update(UpdateBookRequest request);
 
+    Book save(Book entity);
 }

@@ -81,7 +81,8 @@ public class PatronService implements PatronInterface  {
     }
 
     @Transactional
-    private Patron save(Patron entity) {
+    @Override
+    public Patron save(Patron entity) {
         return patronRepository.save(entity);
     }
 }

@@ -19,4 +19,6 @@ public interface PatronInterface {
     Long deleteById(Long id);
 
     ResponseEntity<PatronDto> update(UpdatePatronRequest request);
+
+    public Patron save(Patron entity);
 }

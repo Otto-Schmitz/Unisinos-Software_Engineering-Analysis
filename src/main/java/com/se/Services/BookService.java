@@ -8,6 +8,9 @@ import com.se.Mappers.BookMapper;
 import com.se.Repositories.BookRepository;
 import com.se.contracts.BookInterface;
 import com.se.contracts.BookMetadataInterface;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -87,7 +90,8 @@ public class BookService implements BookInterface {
                         ));
     }
 
-    private Book save(Book entity) {
+    @Transactional
+    public Book save(Book entity) {
         return bookRepository.save(entity);
     }
 }
