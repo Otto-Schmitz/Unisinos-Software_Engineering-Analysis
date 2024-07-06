@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "213c1259-0436-4328-a755-f5dcab1b63e3",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36787601",
+		"_collection_link": "https://time-time-7733.postman.co/workspace/TIME-TIME-Workspace~1f20f31e-f585-4c58-91d4-296504f46ac4/collection/36787601-213c1259-0436-4328-a755-f5dcab1b63e3?action=share&source=collection_link&creator=36787601"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "User1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/public/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
