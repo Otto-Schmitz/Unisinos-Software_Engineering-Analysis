@@ -15,4 +15,7 @@ public class UpdatePatronRequest {
 
     @NotNull(message = "LastName must be valid.")
     private String lastName;
+
+    @NotNull(message = "Debt must be valid.")
+    private Integer debt;
 }

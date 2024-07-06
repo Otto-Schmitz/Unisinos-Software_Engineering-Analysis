@@ -61,7 +61,7 @@ public class PatronService implements PatronInterface  {
     @Override
     public ResponseEntity<PatronDto> update(UpdatePatronRequest request) {
         try {
-            return ResponseEntity.ok(toDto(updateBookMetadata(request)));
+            return ResponseEntity.ok(toDto(updatePatron(request)));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
@@ -76,8 +76,8 @@ public class PatronService implements PatronInterface  {
         return id;
     }
 
-    private Patron updateBookMetadata(UpdatePatronRequest request) {
-        return save(getById(request.getId()));
+    private Patron updatePatron(UpdatePatronRequest request) {
+        return save(PatronMapper.updateEntity(getById(request.getId()), request));
     }
 
     @Transactional
