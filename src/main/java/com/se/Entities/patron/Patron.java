@@ -24,7 +24,7 @@ import lombok.EqualsAndHashCode;
 public class Patron {
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
     @NonNull

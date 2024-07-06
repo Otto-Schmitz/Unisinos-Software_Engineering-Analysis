@@ -17,13 +17,14 @@ import java.util.Set;
 public class BookMetadata {
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     /**
      * @see Book
      */
     @OneToMany(mappedBy = "metadata")
     @NonNull
+    @Builder.Default
     private Set<Book> copies = new HashSet<>();
     @NonNull
     private String title;

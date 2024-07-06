@@ -30,7 +30,7 @@ public class Book {
      */
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     /**
      * Relaciona com o {@link BookMetadata}.
