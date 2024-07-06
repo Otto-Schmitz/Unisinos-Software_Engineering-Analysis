@@ -35,7 +35,7 @@ public class BookService implements BookInterface  {
     private Book createBook(CreateBookRequest request) {
         return bookRepository.save(
                 BookMapper
-                        .toEntity(request, bookMetadataInterface.getObject(
+                        .toEntity(request, bookMetadataInterface.getById(
                                 request.getMetadataId()
                         ))
         );

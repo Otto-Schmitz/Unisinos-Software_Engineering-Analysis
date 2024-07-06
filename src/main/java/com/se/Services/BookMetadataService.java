@@ -37,8 +37,12 @@ public class BookMetadataService implements BookMetadataInterface {
     }
 
     @Override
-    public BookMetadata getObject(Long id) {
-        return getObjectBookMetadata(id);
+    public ResponseEntity<BookMetadataDto> get(Long id) {
+        try {
+            return ResponseEntity.ok(toDto(getById(id)));
+        } catch (Exception e) {
+            return notFound().build();
+        }
     }
 
     @Override
@@ -60,12 +64,12 @@ public class BookMetadataService implements BookMetadataInterface {
     }
 
     private BookMetadata updateBookMetadata(UpdateBookMetadataRequest request) {
-        return save(getObjectBookMetadata(request.getId()));
+        return save(getById(request.getId()));
     }
 
     @Transactional
-    private Long deleteById(Long id) {
-        getObjectBookMetadata(id);
+    public Long deleteById(Long id) {
+        getById(id);
         bookMetadataRepository.deleteById(id);
 
         return id;
@@ -80,7 +84,7 @@ public class BookMetadataService implements BookMetadataInterface {
         return bookMetadataRepository.save(entity);
     }
 
-    private BookMetadata getObjectBookMetadata(Long id) {
+    public BookMetadata getById(Long id) {
         return bookMetadataRepository.findById(id).orElseThrow();
     }
 }
