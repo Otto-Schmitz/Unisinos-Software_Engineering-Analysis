@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   postgres:
@@ -32,6 +32,9 @@ services:
       - '8080:8080'
     networks:
       - app-network
+    volumes:
+      - ./src:/app/src  # Mapeia o diretório src local para o contêiner
+      - ./pom.xml:/app/pom.xml  # Mapeia o arquivo pom.xml local para o contêiner
 
 volumes:
   postgres-data:

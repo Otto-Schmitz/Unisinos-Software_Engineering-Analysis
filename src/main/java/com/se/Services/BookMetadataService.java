@@ -32,6 +32,7 @@ public class BookMetadataService implements BookMetadataInterface {
                             .toDto(createBookMetadata(request))
             );
         } catch (Exception e) {
+            System.out.println(e.fillInStackTrace().toString());
             return badRequest().build();
         }
     }
