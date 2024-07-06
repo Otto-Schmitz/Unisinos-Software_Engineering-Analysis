@@ -26,7 +26,7 @@ import lombok.NonNull;
 @Table(name = "book")
 public class Book {
     /**
-     * Identifica ema cópia física de um livro.
+     * Identifica uma cópia física de um livro.
      */
     @Id
     @EqualsAndHashCode.Include
