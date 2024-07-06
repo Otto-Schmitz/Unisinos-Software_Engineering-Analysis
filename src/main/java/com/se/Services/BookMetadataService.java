@@ -8,13 +8,14 @@ import com.se.Repositories.BookMetadataRepository;
 import com.se.contracts.BookMetadataInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 
 import static com.se.Mappers.BookMetadataMapper.toEntity;
 
-
+@Service
 public class BookMetadataService implements BookMetadataInterface {
 
     @Autowired
