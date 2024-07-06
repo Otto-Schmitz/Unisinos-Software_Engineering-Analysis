@@ -46,6 +46,12 @@ public class BookMetadataService implements BookMetadataInterface {
     }
 
     @Override
+    public BookMetadata getById(Long id) {
+        return bookMetadataRepository.findById(id).orElseThrow();
+    }
+
+
+    @Override
     public ResponseEntity<Long> delete(Long id) {
         try {
             return ok(deleteById(id));
@@ -63,16 +69,17 @@ public class BookMetadataService implements BookMetadataInterface {
         }
     }
 
-    private BookMetadata updateBookMetadata(UpdateBookMetadataRequest request) {
-        return save(getById(request.getId()));
-    }
-
+    @Override
     @Transactional
     public Long deleteById(Long id) {
         getById(id);
         bookMetadataRepository.deleteById(id);
 
         return id;
+    }
+
+    private BookMetadata updateBookMetadata(UpdateBookMetadataRequest request) {
+        return save(getById(request.getId()));
     }
 
     private BookMetadata createBookMetadata(CreateBookMetadataRequest request) {
@@ -82,9 +89,5 @@ public class BookMetadataService implements BookMetadataInterface {
     @Transactional
     private BookMetadata save(BookMetadata entity) {
         return bookMetadataRepository.save(entity);
-    }
-
-    public BookMetadata getById(Long id) {
-        return bookMetadataRepository.findById(id).orElseThrow();
     }
 }
