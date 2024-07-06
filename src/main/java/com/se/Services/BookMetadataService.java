@@ -14,8 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 
-import static com.se.Mappers.BookMetadataMapper.toDto;
-import static com.se.Mappers.BookMetadataMapper.toEntity;
+import static com.se.Mappers.BookMetadataMapper.*;
 import static org.springframework.http.ResponseEntity.*;
 
 @Service
@@ -80,7 +79,7 @@ public class BookMetadataService implements BookMetadataInterface {
     }
 
     private BookMetadata updateBookMetadata(UpdateBookMetadataRequest request) {
-        return save(getById(request.getId()));
+        return save(updateEntity(getById(request.getId()), request));
     }
 
     private BookMetadata createBookMetadata(CreateBookMetadataRequest request) {
