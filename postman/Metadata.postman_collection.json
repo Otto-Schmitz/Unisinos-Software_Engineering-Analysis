@@ -91,7 +91,7 @@
 					"formdata": [
 						{
 							"key": "id",
-							"value": "3",
+							"value": "1",
 							"type": "text"
 						},
 						{
@@ -151,7 +151,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/metadatas/3",
+					"raw": "http://localhost:8080/metadatas/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -159,7 +159,7 @@
 					"port": "8080",
 					"path": [
 						"metadatas",
-						"3"
+						"1"
 					]
 				}
 			},

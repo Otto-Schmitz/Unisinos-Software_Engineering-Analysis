@@ -146,7 +146,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/books/3",
+					"raw": "http://localhost:8080/books/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -154,7 +154,7 @@
 					"port": "8080",
 					"path": [
 						"books",
-						"3"
+						"1"
 					]
 				}
 			},
