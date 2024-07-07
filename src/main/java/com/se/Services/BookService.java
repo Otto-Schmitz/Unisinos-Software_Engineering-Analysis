@@ -31,7 +31,7 @@ public class BookService implements BookInterface {
     @Override
     public ResponseEntity<BookDto> create(CreateBookRequest request) {
         try {
-            return ok(toDto(createBook(request)));
+            return ok(toDto(save(createBook(request))));
         } catch (Exception e) {
             return badRequest().build();
         }
